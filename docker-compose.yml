@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.4"
 services:
   php:
     build: './php/'
@@ -24,6 +24,14 @@ services:
       - backend
     environment:
       - MYSQL_ROOT_PASSWORD=rootpassword
+  phpmyadmin:
+    build:
+      context: ./phpmyadmin
+      args:
+        PHPMYADMIN_VERSION: $PHPMYADMIN_VERSION
+        PHPMYADMIN_DIR: $PHPMYADMIN_DIR
+    networks:
+      - backend
 networks:
   frontend:
   backend:
